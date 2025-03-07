@@ -1,0 +1,67 @@
+{
+  "name": "blood-pressure-app",
+  "version": "0.0.0",
+  "private": true,
+  "description": "This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.9.",
+  "homepage": "https://github.com/matiolsz/BloodPressureApp#readme",
+  "bugs": {
+    "url": "https://github.com/matiolsz/BloodPressureApp/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matiolsz/BloodPressureApp.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "node -r dotenv/config mynode.js && ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "serve:ssr:BloodPressureApp": "node dist/blood-pressure-app/server/server.mjs"
+  },
+  "dependencies": {
+    "@angular/animations": "^19.1.3",
+    "@angular/cdk": "^19.1.1",
+    "@angular/common": "^19.1.3",
+    "@angular/compiler": "^19.1.3",
+    "@angular/core": "^19.1.3",
+    "@angular/fire": "^19.0.0",
+    "@angular/forms": "^19.1.3",
+    "@angular/material": "^19.1.1",
+    "@angular/platform-browser": "^19.1.3",
+    "@angular/platform-browser-dynamic": "^19.1.3",
+    "@angular/platform-server": "^19.1.3",
+    "@angular/router": "^19.1.3",
+    "@angular/ssr": "^19.1.4",
+    "@firebase/app": "^0.10.18",
+    "@firebase/auth": "^1.8.2",
+    "@firebase/database": "^1.0.11",
+    "@firebase/firestore": "^4.7.6",
+    "@google-cloud/secret-manager": "^5.6.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.18.2",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "uuid": "^11.0.5",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.1.4",
+    "@angular/cli": "^19.1.4",
+    "@angular/compiler-cli": "^19.1.3",
+    "@types/express": "^4.17.17",
+    "@types/jasmine": "~5.1.0",
+    "@types/node": "^18.18.0",
+    "jasmine-core": "~5.2.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.5.2"
+  }
+}

@@ -1,0 +1,116 @@
+<form (ngSubmit)="onSignUp()" class="signup-form">
+  <div class="signin-container">
+    <div class="logo-container">
+      <img
+        src="assets/photos/yourbplogoo.png"
+        alt="Company Logo"
+        class="logo"
+      />
+    </div>
+    <mat-card>
+      <mat-card-content>
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input
+            matInput
+            type="email"
+            [(ngModel)]="email"
+            name="email"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            [(ngModel)]="password"
+            name="password"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Your Name</mat-label>
+          <input
+            matInput
+            type="text"
+            [(ngModel)]="username"
+            name="username"
+            required
+          />
+        </mat-form-field>
+
+        <div class="button-group">
+          <button mat-raised-button color="primary" type="submit">
+            Sign Up
+          </button>
+          <button
+            mat-button
+            color="accent"
+            type="button"
+            (click)="redirectToLogin()"
+          >
+            Log In
+          </button>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</form>
+
+<style>
+  body {
+    background-color: #f5f5f5;
+  }
+
+  .signup-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 16px;
+    background-color: #f5f5f5;
+  }
+
+  .login-container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .logo-container {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .logo {
+    height: 15rem;
+    width: auto;
+    object-fit: contain;
+  }
+
+  mat-card {
+    width: 100%;
+    max-width: 400px;
+    background-color: #f5f5f5;
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+
+  .error-message {
+    color: red;
+    margin-top: 10px;
+    text-align: center;
+  }
+</style>
