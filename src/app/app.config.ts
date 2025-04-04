@@ -9,15 +9,20 @@ import { environment } from '../environments/environment';
 import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(),
-      provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
-      provideAuth(() => getAuth()),
-      provideFirestore(() => getFirestore()),
-      AngularFirestore, // Provide AngularFirestore
-      AngularFirestoreModule,
-      { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, provideAnimationsAsync()
-
+  providers: [
+    provideZoneChangeDetection({ eventCoalescing: true }), 
+    provideRouter(routes), 
+    provideClientHydration(),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    AngularFirestore,
+    AngularFirestoreModule,
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, 
+    provideAnimationsAsync(),
+    MatDialogModule
   ]
 };

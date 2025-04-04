@@ -12,18 +12,25 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { v4 as uuidv4 } from 'uuid';
+import { EditProfileDialogComponent } from '../edit-profile-dialog/edit-profile-dialog.component';
 
 @Component({
   standalone: true,
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  imports: [FormsModule, CommonModule,MatCardModule,
+  imports: [
+    FormsModule,
+    CommonModule,
+    MatCardModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MatProgressSpinnerModule ],
+    MatProgressSpinnerModule,
+    MatDialogModule
+  ],
   styleUrls: ['./dashboard.component.css'],
 })
 
@@ -33,7 +40,12 @@ export class DashboardComponent implements OnInit {
   systolic!: number;
   diastolic!: number;
 
-  constructor(private bloodPressureService: BloodPressureService, private auth: Auth, private authService: AuthService) {
+  constructor(
+    private bloodPressureService: BloodPressureService,
+    private auth: Auth,
+    private authService: AuthService,
+    private dialog: MatDialog
+  ) {
     this.auth.onAuthStateChanged((user) => {
       this.user = user;
     });
@@ -63,8 +75,15 @@ export class DashboardComponent implements OnInit {
   }
 
   editProfile() {
-    // Add your edit profile logic here
-    console.log('Edit profile clicked');
+    const dialogRef = this.dialog.open(EditProfileDialogComponent, {
+      data: { displayName: this.user?.displayName || '' }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.authService.setUserName(result);
+      }
+    });
   }
 
   logout() {
