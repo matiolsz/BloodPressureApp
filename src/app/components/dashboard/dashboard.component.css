@@ -1,0 +1,30 @@
+.reading-value {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.bp-number {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2196f3;
+}
+
+.bp-unit {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.heart-rate {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #2196f3;
+  margin-left: 8px;
+  padding-left: 8px;
+  border-left: 1px solid #000000;
+}
+
+.third-width {
+  flex: 1;
+  height: 48px;
+}

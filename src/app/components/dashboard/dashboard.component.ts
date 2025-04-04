@@ -39,6 +39,7 @@ export class DashboardComponent implements OnInit {
   results$: Observable<Result[]> | undefined;
   systolic!: number;
   diastolic!: number;
+  heartRate!: number;
 
   constructor(
     private bloodPressureService: BloodPressureService,
@@ -64,6 +65,7 @@ export class DashboardComponent implements OnInit {
         user_uuid: this.user!.uid,
         systolic: this.systolic,
         diastolic: this.diastolic,
+        heartRate: this.heartRate,
         created_at: new Date().toJSON(), // Set the date
       });
   }
