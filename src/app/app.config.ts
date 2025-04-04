@@ -10,6 +10,10 @@ import { AngularFirestore, AngularFirestoreModule } from '@angular/fire/compat/f
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatDialogModule } from '@angular/material/dialog';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideHttpClient } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
+import { HealthTipsService } from './services/health-tips.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +27,10 @@ export const appConfig: ApplicationConfig = {
     AngularFirestoreModule,
     { provide: FIREBASE_OPTIONS, useValue: environment.firebaseConfig }, 
     provideAnimationsAsync(),
-    MatDialogModule
+    MatDialogModule,
+    provideAnimations(),
+    provideHttpClient(),
+    AuthService,
+    HealthTipsService
   ]
 };

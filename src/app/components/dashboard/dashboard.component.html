@@ -5,125 +5,130 @@
   </button>
 </div>
 
-<div *ngIf="user" class="dashboard">
-  <mat-card>
-    <mat-card-content>
-      <div class="header">
-        <h2 *ngIf="user.displayName; then content; else other_content"></h2>
-      </div>
-
-      <ng-template #content>
-        <div class="welcome-title">
-          Welcome, {{ user.displayName }}!
-          <button
-            mat-icon-button
-            class="edit-button"
-            color="primary"
-            (click)="editProfile()"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
+<div *ngIf="user" class="dashboard-container">
+  <div class="dashboard-left">
+    <mat-card>
+      <mat-card-content>
+        <div class="header">
+          <h2 *ngIf="user.displayName; then content; else other_content"></h2>
         </div>
-      </ng-template>
-      <ng-template #other_content>
-        <div class="welcome-title">
-          Welcome, {{ user.email }}!
-          <button
-            mat-icon-button
-            class="edit-button"
-            color="primary"
-            (click)="editProfile()"
-          >
-            <mat-icon>edit</mat-icon>
-          </button>
-        </div>
-      </ng-template>
 
-      <form (ngSubmit)="onSubmit()" class="measurement-form">
-        <div class="input-row">
-          <mat-form-field appearance="outline" class="third-width">
-            <mat-label>Systolic</mat-label>
-            <input
-              matInput
-              type="number"
-              [(ngModel)]="systolic"
-              name="systolic"
-              required
-            />
-          </mat-form-field>
+        <ng-template #content>
+          <div class="welcome-title">
+            Welcome, {{ user.displayName }}!
+            <button
+              mat-icon-button
+              class="edit-button"
+              color="primary"
+              (click)="editProfile()"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+        </ng-template>
+        <ng-template #other_content>
+          <div class="welcome-title">
+            Welcome, {{ user.email }}!
+            <button
+              mat-icon-button
+              class="edit-button"
+              color="primary"
+              (click)="editProfile()"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+        </ng-template>
 
-          <mat-form-field appearance="outline" class="third-width">
-            <mat-label>Diastolic</mat-label>
-            <input
-              matInput
-              type="number"
-              [(ngModel)]="diastolic"
-              name="diastolic"
-              required
-            />
-          </mat-form-field>
+        <form (ngSubmit)="onSubmit()" class="measurement-form">
+          <div class="input-row">
+            <mat-form-field appearance="outline" class="third-width">
+              <mat-label>Systolic</mat-label>
+              <input
+                matInput
+                type="number"
+                [(ngModel)]="systolic"
+                name="systolic"
+                required
+              />
+            </mat-form-field>
 
-          <mat-form-field appearance="outline" class="third-width">
-            <mat-label>Heart Rate</mat-label>
-            <input
-              matInput
-              type="number"
-              [(ngModel)]="heartRate"
-              name="heartRate"
-              required
-            />
-          </mat-form-field>
+            <mat-form-field appearance="outline" class="third-width">
+              <mat-label>Diastolic</mat-label>
+              <input
+                matInput
+                type="number"
+                [(ngModel)]="diastolic"
+                name="diastolic"
+                required
+              />
+            </mat-form-field>
 
-          <button
-            mat-icon-button
-            color="primary"
-            type="submit"
-            class="add-button"
-          >
-            <mat-icon>add</mat-icon>
-          </button>
-        </div>
-      </form>
+            <mat-form-field appearance="outline" class="third-width">
+              <mat-label>Heart Rate</mat-label>
+              <input
+                matInput
+                type="number"
+                [(ngModel)]="heartRate"
+                name="heartRate"
+                required
+              />
+            </mat-form-field>
 
-      <div class="readings-container">
-        <h3 class="readings-title">Blood Pressure History</h3>
-        <div class="readings-list">
-          <ng-container *ngIf="results$ | async as results; else loading">
-            <div *ngFor="let result of results" class="reading-item">
-              <div class="reading-value">
-                <span class="bp-number">{{ result.systolic }}/{{ result.diastolic }}</span>
-                <span class="bp-unit">mmHg</span>
-                <span class="heart-rate">{{ result.heartRate }}</span>
-                <span class="bp-unit">bpm</span>
+            <button
+              mat-icon-button
+              color="primary"
+              type="submit"
+              class="add-button"
+            >
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+        </form>
 
-              </div>
-              <div class="reading-info">
-                <div class="reading-date">
-                  {{ result.created_at | date : "MMM dd, yyyy" }}
-                  <span class="reading-time">{{
-                    result.created_at | date : "hh:mm a"
-                  }}</span>
+        <div class="readings-container">
+          <h3 class="readings-title">Blood Pressure History</h3>
+          <div class="readings-list">
+            <ng-container *ngIf="results$ | async as results; else loading">
+              <div *ngFor="let result of results" class="reading-item">
+                <div class="reading-value">
+                  <span class="bp-number">{{ result.systolic }}/{{ result.diastolic }}</span>
+                  <span class="bp-unit">mmHg</span>
+                  <span class="heart-rate">{{ result.heartRate }}</span>
+                  <span class="bp-unit">bpm</span>
                 </div>
-                <button
-                  mat-icon-button
-                  color="warn"
-                  class="delete-button"
-                  (click)="deleteResult(result.id)"
-                >
-                  <mat-icon>delete</mat-icon>
-                </button>
+                <div class="reading-info">
+                  <div class="reading-date">
+                    {{ result.created_at | date : "MMM dd, yyyy" }}
+                    <span class="reading-time">{{
+                      result.created_at | date : "hh:mm a"
+                    }}</span>
+                  </div>
+                  <button
+                    mat-icon-button
+                    color="warn"
+                    class="delete-button"
+                    (click)="deleteResult(result.id)"
+                  >
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
               </div>
-            </div>
-          </ng-container>
-          <ng-template #loading>
-            <div class="loading-container">
-              <mat-spinner diameter="40"></mat-spinner>
-            </div>
-          </ng-template>
+            </ng-container>
+            <ng-template #loading>
+              <div class="loading-container">
+                <mat-spinner diameter="40"></mat-spinner>
+              </div>
+            </ng-template>
+          </div>
         </div>
-      </div>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <div class="dashboard-right">
+    <app-health-tips></app-health-tips>
+  </div>
 </div>
 <style>
   body {
@@ -147,18 +152,26 @@
     object-fit: contain;
   }
 
-  .dashboard {
+  .dashboard-container {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
     padding: 16px;
     background-color: #f5f5f5;
     min-height: calc(100vh - 40px);
-    width: 100%;
+    gap: 16px;
+  }
+
+  .dashboard-left {
+    flex: 0 0 600px;
+  }
+
+  .dashboard-right {
+    border-radius: 8px;
+    overflow: hidden;
   }
 
   mat-card {
     width: 100%;
-    max-width: 600px;
     background-color: #f5f5f5;
     padding: 12px;
     margin-bottom: 12px;
@@ -173,7 +186,7 @@
   }
 
   .edit-button .mat-icon {
-    font-size: 16px; /* Made icon slightly smaller */
+    font-size: 16px;
     width: 16px;
     height: 16px;
     line-height: 16px;
@@ -228,20 +241,20 @@
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     max-height: calc(100vh - 300px);
     overflow-y: auto;
-    margin-bottom: 0; /* Add this to remove any bottom margin */
-    padding-bottom: 0; /* Add this to remove any bottom padding */
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 
   .reading-item:last-child {
     border-bottom: none;
     margin-bottom: 0;
-    padding-bottom: 12px; /* Adjust this value as needed */
+    padding-bottom: 12px;
   }
 
   .reading-item {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* This ensures the entire content is vertically centered */
+    align-items: center;
     padding: 12px;
     border-bottom: 1px solid #eee;
   }
@@ -303,22 +316,21 @@
     background-color: white;
   }
 
-  /* Optional: If you want to customize the spinner color to match your theme */
   ::ng-deep .mat-spinner circle {
     stroke: #2196f3;
   }
 
   .reading-info {
     display: flex;
-    align-items: center; /* This ensures vertical centering */
+    align-items: center;
     gap: 8px;
-    height: 100%; /* Take full height of parent */
+    height: 100%;
   }
 
   .reading-item {
     display: flex;
     justify-content: space-between;
-    align-items: center; /* This ensures the entire content is vertically centered */
+    align-items: center;
     padding: 12px;
     border-bottom: 1px solid #eee;
   }
@@ -329,8 +341,8 @@
     line-height: 32px;
     display: flex;
     align-items: center;
-    justify-content: center; /* Center the icon within the button */
-    margin: auto 0; /* This helps with vertical centering */
+    justify-content: center;
+    margin: auto 0;
   }
 
   .delete-button .mat-icon {
@@ -343,8 +355,23 @@
     justify-content: center;
   }
 
-  /* Optional: Add hover effect */
   .delete-button:hover {
     background-color: rgba(244, 67, 54, 0.1);
+  }
+
+  /* Responsive layout for smaller screens */
+  @media (max-width: 1024px) {
+    .dashboard-container {
+      flex-direction: column;
+    }
+    
+    .dashboard-left {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+    
+    .dashboard-right {
+      width: 100%;
+    }
   }
 </style>

@@ -15,6 +15,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { v4 as uuidv4 } from 'uuid';
 import { EditProfileDialogComponent } from '../edit-profile-dialog/edit-profile-dialog.component';
+import { HealthTipsComponent } from '../health-tips/health-tips.component';
 
 @Component({
   standalone: true,
@@ -29,7 +30,8 @@ import { EditProfileDialogComponent } from '../edit-profile-dialog/edit-profile-
     MatButtonModule,
     MatIconModule,
     MatProgressSpinnerModule,
-    MatDialogModule
+    MatDialogModule,
+    HealthTipsComponent
   ],
   styleUrls: ['./dashboard.component.css'],
 })
