@@ -15,7 +15,7 @@ A modern, user-friendly web application for tracking and monitoring blood pressu
 
 ## 🚀 Live Demo
 
-Visit the application: [Blood Pressure App]([https://github.com/matiolsz/BloodPressureApp#readme](https://bpapp2--bloodpressureapp-c1e59.europe-west4.hosted.app/dashboard))
+Visit the application: [Blood Pressure App]([https://github.com/matiolsz/BloodPressureApp#readme](https://bpapp2--bloodpressureapp-c1e59.europe-west4.hosted.app/dashboard)])
 
 ## 🛠️ Technology Stack
 
